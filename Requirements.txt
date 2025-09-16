@@ -1,0 +1,11 @@
+# Data Handling 
+pandas
+numpy
+# Visualization 
+matplotlib
+seaborn
+plotly
+# Machine Learning & Clustering 
+scikit-learn
+
+
