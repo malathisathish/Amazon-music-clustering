@@ -1,0 +1,155 @@
+Project : Amazon Music Clustering & Recommendation Report
+
+---
+Dataset Overview
+
+♥ Dataset Name: Amazon Music Clustering
+
+♥ Source: Amazon music platform
+
+♥ Data Format: CSV file
+
+♥ Number of Records (Rows): 95,837
+
+♥ Number of Features (Columns): 23
+
+♥ Feature Types:
+   ♦ 7 categorical (object/string)
+   ♦ 12 numerical (float)
+   ♦ 4 numerical (integer)
+
+♥ Columns in Dataset:
+
+1 id_songs – Unique identifier of each song
+2 name_song – Name/title of the track
+3 popularity_songs – Popularity score of the song (0–100)
+4 duration_ms – Duration of the track in milliseconds
+5 explicit – Explicit content flag (0 = No, 1 = Yes)
+6 id_artists – Unique identifier of the artist(s)
+7 release_date – Release date of the trac
+8 danceability – Danceability score (0.0 to 1.0)
+9 energy – Energy/intensity of the track
+10 key – Musical key of the song (0–11)
+11 loudness – Overall loudness in decibels (dB)
+12 mode – Modality of the song (major = 1, minor = 0)
+13 speechiness – Presence of spoken words in the track
+14 acousticness – Acoustic quality score
+15 instrumentalness – Likelihood of being instrumental
+16 liveness – Probability of live performance
+17 valence – Musical positiveness/mood score
+18 tempo – Tempo of the track in BPM (beats per minute)
+19 time_signature – Time signature (beats per bar)
+20 followers – Number of followers of the artist(s)
+21 genres – Genre(s) associated with the artist(s)
+22 name_artists – Name(s) of the artist(s)
+23 popularity_artists – Popularity score of the artist(s)
+
+♥ Timeframe Covered: Songs range from early 20th-century releases (1920s) to modern tracks (up to 2020).
+
+♥ Brief Description:
+This dataset captures a wide spectrum of audio features, popularity metrics, and artist metadata for Amazon Music/Spotify-like tracks. It combines song-level attributes (e.g., duration, danceability, energy, valence, tempo, loudness, mode), artist-level characteristics (followers, genres, popularity), and contextual data (release date, explicit flag). It is designed to support exploratory analysis, clustering, and recommendation modeling, making it ideal for studying music similarity, genre trends, artist influence on popularity, and playlist generation.
+Clustering techniques implemented:
+- K-Means Clustering (partitional, optimal k = 4 via silhouette score)
+- DBSCAN (density-based, eps=0.8, min_samples=5)
+- Hierarchical Clustering (agglomerative, linkage=ward, n_clusters=4)
+
+---
+
+2. Clustering Analysis
+
+2.1 K-Means Clustering
+Parameters: n_clusters = 4, random_state = 42
+Silhouette Score: 0.556
+Davies-Bouldin Index: 0.687
+
+Cluster Characteristics (mean values per cluster):
+Cluster 0:
+ danceability: 0.481, energy: 0.379, loudness: 0.644, speechiness: 0.062, acousticness: 0.709,
+ instrumentalness: 0.816, liveness: 0.187, valence: 0.437, tempo: 0.471, duration_ms: 0.046
+
+Cluster 1:
+ danceability: 0.627, energy: 0.706, loudness: 0.765, speechiness: 0.079, acousticness: 0.182,
+ instrumentalness: 0.032, liveness: 0.203, valence: 0.656, tempo: 0.519, duration_ms: 0.046
+
+Cluster 2:
+ danceability: 0.539, energy: 0.374, loudness: 0.697, speechiness: 0.064, acousticness: 0.747,
+ instrumentalness: 0.017, liveness: 0.189, valence: 0.489, tempo: 0.481, duration_ms: 0.043
+
+Cluster 3:
+ danceability: 0.670, energy: 0.466, loudness: 0.661, speechiness: 0.889, acousticness: 0.595,
+ instrumentalness: 0.001, liveness: 0.430, valence: 0.578, tempo: 0.418, duration_ms: 0.022
+
+---
+
+2.2 DBSCAN Clustering
+Parameters: eps = 0.8, min_samples = 5
+Number of clusters detected: 4
+Noise points: 0
+Silhouette Score: 0.639
+Davies-Bouldin Index: 0.653
+
+Cluster Characteristics (mean values per cluster):
+Cluster 0:
+ danceability: 0.560, energy: 0.366, loudness: 0.700, speechiness: 0.059, acousticness: 0.744,
+ instrumentalness: 0.018, liveness: 0.169, valence: 0.497, tempo: 0.485, duration_ms: 0.042
+
+Cluster 1:
+ danceability: 0.629, energy: 0.706, loudness: 0.762, speechiness: 0.077, acousticness: 0.185,
+ instrumentalness: 0.021, liveness: 0.208, valence: 0.666, tempo: 0.532, duration_ms: 0.047
+
+Cluster 2:
+ danceability: 0.661, energy: 0.493, loudness: 0.669, speechiness: 0.879, acousticness: 0.537,
+ instrumentalness: 0.000, liveness: 0.398, valence: 0.586, tempo: 0.445, duration_ms: 0.019
+
+Cluster 3:
+ danceability: 0.524, energy: 0.380, loudness: 0.656, speechiness: 0.058, acousticness: 0.757,
+ instrumentalness: 0.791, liveness: 0.197, valence: 0.498, tempo: 0.472, duration_ms: 0.040
+
+---
+
+2.3 Hierarchical Clustering
+Parameters: Linkage method = ward, Number of clusters = 4
+Silhouette Score: 0.639
+Davies-Bouldin Index: 0.540
+
+Cluster Characteristics (mean values per cluster):
+Cluster 0:
+ danceability: 0.629, energy: 0.706, loudness: 0.762, speechiness: 0.077, acousticness: 0.185,
+ instrumentalness: 0.021, liveness: 0.208, valence: 0.666, tempo: 0.532, duration_ms: 0.047
+
+Cluster 1:
+ danceability: 0.560, energy: 0.366, loudness: 0.700, speechiness: 0.059, acousticness: 0.744,
+ instrumentalness: 0.018, liveness: 0.169, valence: 0.497, tempo: 0.485, duration_ms: 0.042
+
+Cluster 2:
+ danceability: 0.661, energy: 0.493, loudness: 0.669, speechiness: 0.879, acousticness: 0.537,
+ instrumentalness: 0.000, liveness: 0.398, valence: 0.586, tempo: 0.445, duration_ms: 0.019
+
+Cluster 3:
+ danceability: 0.524, energy: 0.380, loudness: 0.656, speechiness: 0.058, acousticness: 0.757,
+ instrumentalness: 0.791, liveness: 0.197, valence: 0.498, tempo: 0.472, duration_ms: 0.040
+
+---
+
+3. Recommendation System
+Content-based approach using cosine similarity on audio features.
+Key features: danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo
+Example: For the original song (index 0), recommended songs from same cluster include 3 tracks with similar audio feature profiles.
+
+---
+
+4. Insights & Observations
+- High-energy, high-valence clusters correlate with danceable tracks.
+- High acousticness and instrumentalness dominate calm or experimental clusters.
+- DBSCAN identifies outlier tracks effectively (though in this dataset noise=0).
+- Hierarchical clustering reveals nested relationships between clusters.
+- Cluster-based recommendations enhance playlist diversity.
+
+Business Implications:
+- Cluster-based playlists improve user engagement.
+- Outliers highlight unique tracks for niche audiences.
+- Cluster insights support targeted marketing and mood-based playlists.
+
+---
+
+End of Report
